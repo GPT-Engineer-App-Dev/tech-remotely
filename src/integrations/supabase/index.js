@@ -17,32 +17,6 @@ const fromSupabase = async (query) => {
     return data;
 };
 
-/* supabase integration types
-
-Jobs // table: jobs
-    id: number
-    created_at: string
-    jobs_title: string
-    job_type: string
-    job_area: string
-
-Events // table: events
-    id: number
-    created_at: string
-    name: string
-    date: string
-    venue_id: number
-    is_starred: boolean
-    private: boolean
-    cancelled: boolean
-
-Comments // table: comments
-    id: number
-    created_at: string
-    content: string
-    event_id: number // foreign key to Events
-*/
-
 // Hooks for Jobs
 export const useJobs = () => useQuery({
     queryKey: ['jobs'],
