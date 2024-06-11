@@ -42,7 +42,7 @@ const Index = () => {
               <Link to={`/job/${job.id}`}>
                 <CardHeader>
                   <Heading as="h3" size="md">
-                    {job.job_title}
+                    {job.jobs_title}
                   </Heading>
                   <Text fontSize="sm" color="gray.500">
                     {job.job_area}
