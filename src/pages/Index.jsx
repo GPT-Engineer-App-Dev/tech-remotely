@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, VStack, Text, Select, Heading, SimpleGrid, Card, CardHeader, CardBody, Button } from "@chakra-ui/react";
-import { useJobs } from "../integrations/supabase/index.js";
+import { useJobs, useDeleteJob } from "../integrations/supabase/index.js";
 import { useSupabaseAuth } from "../integrations/supabase/auth.jsx";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const { data: jobs, isLoading, error } = useJobs();
   const { session, logout } = useSupabaseAuth();
+
+  const { mutate: deleteJob } = useDeleteJob();
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this job?")) {
+      deleteJob(id);
+    }
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -54,6 +62,11 @@ const Index = () => {
                   <Text>{job.job_type}</Text>
                 </CardBody>
               </Link>
+              {session && (
+                <Button colorScheme="red" onClick={() => handleDelete(job.id)}>
+                  Delete
+                </Button>
+              )}
             </Card>
           ))}
         </SimpleGrid>
