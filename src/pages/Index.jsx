@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, VStack, Text, Select, Box, Heading, SimpleGrid, Card, CardHeader, CardBody } from "@chakra-ui/react";
+import { Container, VStack, Text, Select, Heading, SimpleGrid, Card, CardHeader, CardBody } from "@chakra-ui/react";
 import { useJobs } from "../integrations/supabase/index.js";
 
 const Index = () => {
@@ -42,7 +42,7 @@ const Index = () => {
               <Link to={`/job/${job.id}`}>
                 <CardHeader>
                   <Heading as="h3" size="md">
-                    {job.jobs_title}
+                    {job.job_title}
                   </Heading>
                   <Text fontSize="sm" color="gray.500">
                     {job.job_area}
